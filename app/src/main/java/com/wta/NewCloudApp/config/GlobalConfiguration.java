@@ -27,7 +27,7 @@ import com.jess.arms.http.log.RequestInterceptor;
 import com.jess.arms.integration.ConfigModule;
 import com.jess.arms.utils.ArmsUtils;
 import com.wta.NewCloudApp.jiuwei210278.BuildConfig;
-import com.wta.NewCloudApp.mvp.model.api.service.Api;
+import com.wta.NewCloudApp.mvp.model.api.Api;
 import com.squareup.leakcanary.RefWatcher;
 
 import java.util.List;

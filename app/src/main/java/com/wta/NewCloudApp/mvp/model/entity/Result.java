@@ -13,6 +13,13 @@ public class Result<T> {
         public int ios_type;
     }
 
+    public Result(int code) {
+        this.code = code;
+    }
+
+    public Result() {
+    }
+
     @Override
     public String toString() {
         return "Result{" +

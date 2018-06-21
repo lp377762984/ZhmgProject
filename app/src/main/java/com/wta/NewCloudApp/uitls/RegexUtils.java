@@ -21,7 +21,8 @@ public class RegexUtils {
     private static final String REGEX_CHZ = "^[\\u4e00-\\u9fa5]+$";
     //正则：用户名，取值范围为中文a-z,A-Z,0-9,"_",汉字
     private static final String REGEX_USERNAME = "^[a-zA-Z0-9\\u4E00-\\u9FA5_]+$";
-
+    //
+    public static final String REGEX_MOBILE = "^((13[0-9])|(14[5,7,9])|(15[^4])|(18[0-9])|(17[0,1,3,5,6,7,8]))\\d{8}$";
     /**
      * 验证身份证号码15位
      *
@@ -65,10 +66,17 @@ public class RegexUtils {
     }
 
     /**
-     * 验证手机号是否合法
+     * 验证手机号是否合法（简单验证）
      */
     public static boolean isMobilePhoneNum(String telNum) {
         return isMatch(REGEX_MOBILE_SIMPLE, telNum);
+    }
+
+    /**
+     * 验证手机号是否合法（简单验证）
+     */
+    public static boolean isMobile(String telNum) {
+        return isMatch(REGEX_MOBILE, telNum);
     }
 
     /**

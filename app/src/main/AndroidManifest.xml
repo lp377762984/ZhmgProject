@@ -11,13 +11,13 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
-        android:name="com.wta.NewCloudApp.config.MyApplication"
+        android:name="com.wta.NewCloudApp.config.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme_NOACTIONBAR">
         <meta-data
             android:name="com.wta.NewCloudApp.config.GlobalConfiguration"
             android:value="ConfigModule" />
@@ -30,6 +30,9 @@
             </intent-filter>
         </activity>
         <activity android:name="com.wta.NewCloudApp.mvp.ui.activity.BaseListActivity" />
+        <activity android:name="com.wta.NewCloudApp.mvp.ui.activity.LoginActivity" android:exported="true"/>
+        <activity android:name="com.wta.NewCloudApp.mvp.ui.activity.BaseLoadingActivity" />
+        <activity android:name="com.wta.NewCloudApp.mvp.ui.activity.WebViewActivity" />
     </application>
 
 </manifest>

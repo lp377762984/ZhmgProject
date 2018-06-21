@@ -15,7 +15,7 @@ public class AppConfig {
 
 
     private AppConfig() {
-        preferences = MyApplication.getInstance().getSharedPreferences("app_config", Context.MODE_PRIVATE);
+        preferences = App.getInstance().getSharedPreferences("app_config", Context.MODE_PRIVATE);
     }
 
     public static AppConfig getInstance() {

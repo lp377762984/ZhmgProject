@@ -9,7 +9,7 @@ import android.os.Build;
 import android.provider.Settings;
 
 
-import com.wta.NewCloudApp.config.MyApplication;
+import com.wta.NewCloudApp.config.App;
 
 import java.io.UnsupportedEncodingException;
 import java.util.UUID;
@@ -44,7 +44,7 @@ public class PackageUtils {
      */
     @SuppressLint("HardwareIds")
     public static String getDeviceId() {
-        String androidId = Settings.Secure.getString(MyApplication.getInstance().getContentResolver(), Settings.Secure.ANDROID_ID);
+        String androidId = Settings.Secure.getString(App.getInstance().getContentResolver(), Settings.Secure.ANDROID_ID);
         try {
             if (!"9774d56d682e549c".equals(androidId)) {
                 return UUID.nameUUIDFromBytes(androidId.getBytes("utf8")).toString();
