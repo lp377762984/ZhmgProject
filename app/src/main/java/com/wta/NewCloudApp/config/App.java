@@ -8,8 +8,8 @@ public class App extends BaseApplication {
 
     @Override
     public void onCreate() {
-        app = this;
         super.onCreate();
+        app = this;
     }
 
     public static App getInstance() {

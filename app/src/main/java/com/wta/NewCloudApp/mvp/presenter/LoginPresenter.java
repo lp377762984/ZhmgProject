@@ -12,6 +12,8 @@ import com.wta.NewCloudApp.mvp.model.IUserModel;
 import com.wta.NewCloudApp.mvp.model.entity.Result;
 import com.wta.NewCloudApp.mvp.model.entity.User;
 
+import java.util.Map;
+
 import javax.inject.Inject;
 
 import me.jessyan.rxerrorhandler.core.RxErrorHandler;
@@ -46,12 +48,12 @@ public class LoginPresenter extends BBasePresenter<IUserModel, LoginContract.Vie
         doRequest(buildRequest(mModel.sendCode(phone)),1);
     }
 
-    public void login(){
-
+    public void login(String phone,String code,String recCode){
+        doRequest(buildRequest(mModel.login(phone,code,recCode)),3);
     }
 
-    public void wxLogin(){
-
+    public void wxLogin(Map<String, String> map){
+        doRequest(buildRequest(mModel.wxLogin(map)),2);
     }
 
     @Override
@@ -59,6 +61,8 @@ public class LoginPresenter extends BBasePresenter<IUserModel, LoginContract.Vie
         super.handle200(what, result);
         if (what==1){
             mRootView.timeCutDown((Result<User>) result);
+        }else {
+            mRootView.loginSuccess((Result<User>) result);
         }
     }
 }

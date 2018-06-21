@@ -132,6 +132,7 @@
         app:layout_constraintTop_toTopOf="@+id/checkBox" />
 
     <Button
+        android:enabled="false"
         android:id="@+id/btn_login"
         android:layout_width="0dp"
         android:layout_height="38dp"

@@ -11,5 +11,6 @@ public interface LoginContract {
     interface View extends IView {
         LoginActivity getActivity();
         void timeCutDown(Result<User> results);
+        void loginSuccess(Result<User> results);
     }
 }

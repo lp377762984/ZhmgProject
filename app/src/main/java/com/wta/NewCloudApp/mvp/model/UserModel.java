@@ -11,6 +11,7 @@ import com.wta.NewCloudApp.mvp.model.entity.Result;
 import com.wta.NewCloudApp.mvp.model.entity.User;
 
 import java.io.File;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
@@ -41,7 +42,7 @@ public class UserModel extends BaseModel implements IUserModel {
     @Override
     public Observable<Result<User>> sendCode(String phone) {
         //return mRepositoryManager.obtainRetrofitService(HttpServices.class).sendCode(phone);
-        return Observable.timer(2,TimeUnit.SECONDS).map(new Function<Long, Result<User>>() {
+        return Observable.timer(2, TimeUnit.SECONDS).map(new Function<Long, Result<User>>() {
             @Override
             public Result<User> apply(Long aLong) throws Exception {
                 return new Result<>(200);
@@ -50,8 +51,30 @@ public class UserModel extends BaseModel implements IUserModel {
     }
 
     @Override
-    public Observable<Result<User>> login(String phone, String code) {
-        return null;
+    public Observable<Result<User>> login(String phone, String code, String recCode) {
+        //return mRepositoryManager.obtainRetrofitService(HttpServices.class).login(phone,code,recCode);
+        return Observable.timer(2, TimeUnit.SECONDS).map(new Function<Long, Result<User>>() {
+            @Override
+            public Result<User> apply(Long aLong) throws Exception {
+                return new Result<>(200);
+            }
+        });
+    }
+
+    @Override
+    public Observable<Result<User>> wxLogin(Map<String, String> map) {
+//        String uid = map.get("uid");
+//        String name = map.get("name");
+//        String gender = map.get("gender");
+//        String iconurl = map.get("iconurl");
+//        return mRepositoryManager.obtainRetrofitService(HttpServices.class).wxLogin(map);
+
+        return Observable.timer(2, TimeUnit.SECONDS).map(new Function<Long, Result<User>>() {
+            @Override
+            public Result<User> apply(Long aLong) throws Exception {
+                return new Result<>(200);
+            }
+        });
     }
 
     @Override

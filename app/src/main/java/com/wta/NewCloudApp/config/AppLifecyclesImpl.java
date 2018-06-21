@@ -22,6 +22,8 @@ import com.jess.arms.base.delegate.AppLifecycles;
 import com.jess.arms.utils.ArmsUtils;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
+import com.umeng.commonsdk.UMConfigure;
+import com.umeng.socialize.PlatformConfig;
 import com.wta.NewCloudApp.jiuwei210278.BuildConfig;
 
 import butterknife.ButterKnife;
@@ -40,35 +42,23 @@ public class AppLifecyclesImpl implements AppLifecycles {
 
     @Override
     public void attachBaseContext(Context base) {
-//          MultiDex.install(base);  //这里比 onCreate 先执行,常用于 MultiDex 初始化,插件化框架的初始化
+        //MultiDex.install(base);
     }
 
     @Override
     public void onCreate(Application application) {
         if (LeakCanary.isInAnalyzerProcess(application)) {
-            // This process is dedicated to LeakCanary for heap analysis.
-            // You should not init your app in this process.
             return;
         }
         if (BuildConfig.LOG_DEBUG) {//Timber初始化
-            //Timber 是一个日志框架容器,外部使用统一的Api,内部可以动态的切换成任何日志框架(打印策略)进行日志打印
-            //并且支持添加多个日志框架(打印策略),做到外部调用一次 Api,内部却可以做到同时使用多个策略
-            //比如添加三个策略,一个打印日志,一个将日志保存本地,一个将日志上传服务器
             Timber.plant(new Timber.DebugTree());
             ButterKnife.setDebug(true);
         }
-        ArmsUtils.obtainAppComponentFromContext(application).extras().put(RefWatcher.class.getName(), BuildConfig.USE_CANARY ? LeakCanary.install(application) : RefWatcher.DISABLED);
-        ArmsUtils.obtainAppComponentFromContext(application).appManager().setHandleListener((appManager, message) -> {
-            switch (message.what) {
-                //case 0:
-                //do something ...
-                //   break;
-            }
-        });
-        //Usage:
-        //Message msg = new Message();
-        //msg.what = 0;
-        //AppManager.post(msg); like EventBus
+        ArmsUtils.obtainAppComponentFromContext(application).extras()
+                .put(RefWatcher.class.getName(), BuildConfig.USE_CANARY ? LeakCanary.install(application) : RefWatcher.DISABLED);
+        //umeng
+        UMConfigure.init(application,"5b1ddaf8f29d9850ae0000e1","umeng", UMConfigure.DEVICE_TYPE_PHONE,"");
+        PlatformConfig.setWeixin("wx2a1f186b101a5e06","fa8346fdf7923eebb9d82ad5d1329d58");
     }
 
     @Override
