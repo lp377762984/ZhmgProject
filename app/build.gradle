@@ -66,6 +66,7 @@ dependencies {
     }
     implementation rootProject.ext.dependencies["FlycoTabLayout"]
     implementation rootProject.ext.dependencies["banner"]
+    implementation project(':zxing')
     //test
     testImplementation rootProject.ext.dependencies["junit"]
     androidTestImplementation rootProject.ext.dependencies["runner"]

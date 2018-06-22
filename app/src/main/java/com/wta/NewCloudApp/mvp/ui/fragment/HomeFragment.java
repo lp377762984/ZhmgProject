@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.jess.arms.di.component.AppComponent;
+import com.jess.arms.utils.ArmsUtils;
 import com.wta.NewCloudApp.di.component.DaggerHomeComponent;
 import com.wta.NewCloudApp.di.module.HomeModule;
 import com.wta.NewCloudApp.jiuwei210278.R;
@@ -18,6 +19,7 @@ import com.wta.NewCloudApp.mvp.contract.HomeContract;
 import com.wta.NewCloudApp.mvp.model.entity.Bill;
 import com.wta.NewCloudApp.mvp.model.entity.Result;
 import com.wta.NewCloudApp.mvp.presenter.HomePresenter;
+import com.wta.NewCloudApp.mvp.ui.activity.SweepActivity;
 import com.wta.NewCloudApp.mvp.ui.adapter.HomeListAdapter;
 import com.youth.banner.Banner;
 
@@ -26,6 +28,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 
 
@@ -78,19 +81,6 @@ public class HomeFragment extends BaseLoadingFragment<HomePresenter> implements 
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        unbinder = ButterKnife.bind(this, rootView);
-        return rootView;
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
-    }
-
-    @Override
     public void showList(Result<List<Bill>> result) {
         if (adapter == null) {
             billData = new ArrayList<>();
@@ -104,5 +94,29 @@ public class HomeFragment extends BaseLoadingFragment<HomePresenter> implements 
             billData.addAll(result.data);
             adapter.notifyDataSetChanged();
         }
+    }
+
+    @OnClick({R.id.im_sweep, R.id.im_bus_code})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.im_sweep:
+                ArmsUtils.startActivity(SweepActivity.class);
+                break;
+            case R.id.im_bus_code:
+                break;
+        }
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View rootView = super.onCreateView(inflater, container, savedInstanceState);
+        unbinder = ButterKnife.bind(this, rootView);
+        return rootView;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
     }
 }

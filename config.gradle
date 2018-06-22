@@ -29,7 +29,7 @@ ext {
             "cardview-v7"              : "com.android.support:cardview-v7:${version["androidSupportSdkVersion"]}",
             "annotations"              : "com.android.support:support-annotations:${version["androidSupportSdkVersion"]}",
             "recyclerview-v7"          : "com.android.support:recyclerview-v7:${version["androidSupportSdkVersion"]}",
-            "constraint-layout"         :"com.android.support.constraint:constraint-layout:1.1.1",
+            "constraint-layout"        : "com.android.support.constraint:constraint-layout:1.1.1",
             //network
             "retrofit"                 : "com.squareup.retrofit2:retrofit:${version["retrofitSdkVersion"]}",
             "retrofit-converter-gson"  : "com.squareup.retrofit2:converter-gson:${version["retrofitSdkVersion"]}",
@@ -53,6 +53,9 @@ ext {
             "paginate"                 : "com.github.markomilos:paginate:0.5.1",
             "vlayout"                  : "com.alibaba.android:vlayout:1.1.0@aar",
             "adapter"                  : "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30",
+            "FlycoTabLayout"           : "com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar",
+            "banner"                   : "com.youth.banner:banner:1.4.10",
+            "zxing"                    : "compile 'com.google.zxing:core:3.3.3'",
 
             //rx1
             "rxandroid"                : "io.reactivex:rxandroid:1.2.1",

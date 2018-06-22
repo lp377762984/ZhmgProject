@@ -47,7 +47,7 @@ public class AppLifecyclesImpl implements AppLifecycles {
 
     @Override
     public void onCreate(Application application) {
-        Thread.setDefaultUncaughtExceptionHandler(new CrashHandler(application));
+        //Thread.setDefaultUncaughtExceptionHandler(new CrashHandler(application));
         if (LeakCanary.isInAnalyzerProcess(application)) {
             return;
         }
