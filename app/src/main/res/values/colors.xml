@@ -37,4 +37,9 @@
     <color name="purchase_yellow_tv">#e5a62c</color>
     <color name="shop_det_red">#FFF24725</color>
     <color name="shop_green">#4ca703</color>
+
+    <color name="line_wider">#FFECE8DC</color>
+    <color name="style_color">#bf3b3e</color>
+    <color name="text_color_gray">#999999</color>
+    <color name="text_color">#666666</color>
 </resources>

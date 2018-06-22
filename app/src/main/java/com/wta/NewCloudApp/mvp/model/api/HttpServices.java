@@ -1,9 +1,11 @@
 package com.wta.NewCloudApp.mvp.model.api;
 
 
+import com.wta.NewCloudApp.mvp.model.entity.Bill;
 import com.wta.NewCloudApp.mvp.model.entity.Result;
 import com.wta.NewCloudApp.mvp.model.entity.User;
 
+import java.util.List;
 import java.util.Map;
 
 import io.reactivex.Observable;
@@ -24,4 +26,8 @@ public interface HttpServices {
     @FormUrlEncoded
     @POST("/login")
     Observable<Result<User>> login(@Field("phone") String phone,@Field("code") String code,@Field("recCode") String recCode);
+
+    @FormUrlEncoded
+    @POST("/getHomeList")
+    Observable<Result<List<Bill>>> getHomeBillList();
 }

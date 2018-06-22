@@ -64,7 +64,8 @@ dependencies {
     annotationProcessor(rootProject.ext.dependencies["butterknife-compiler"]) {
         exclude module: 'support-annotations'
     }
-    implementation rootProject.ext.dependencies["paginate"]
+    implementation rootProject.ext.dependencies["FlycoTabLayout"]
+    implementation rootProject.ext.dependencies["banner"]
     //test
     testImplementation rootProject.ext.dependencies["junit"]
     androidTestImplementation rootProject.ext.dependencies["runner"]

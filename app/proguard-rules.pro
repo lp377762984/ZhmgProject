@@ -282,3 +282,24 @@
 -keep class com.wta.NewCloudApp.mvp.ui.adapter.**{
     *;
 }
+#umeng
+-dontshrink
+-dontoptimize
+-dontwarn com.google.android.maps.**
+-dontwarn android.webkit.WebView
+-dontwarn com.umeng.**
+-dontwarn com.tencent.weibo.sdk.**
+-dontwarn com.facebook.**
+-keep public class javax.**
+-keep public class android.webkit.**
+-dontwarn android.support.v4.**
+# glide
+-keep public class * implements com.bumptech.glide.module.GlideModule
+-keep public enum com.bumptech.glide.load.resource.bitmap.ImageHeaderParser$** {
+  **[] $VALUES;
+  public *;
+}
+# banner
+-keep class com.youth.banner.** {
+    *;
+ }
