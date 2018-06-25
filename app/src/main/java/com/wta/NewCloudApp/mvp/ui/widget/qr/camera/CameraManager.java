@@ -14,7 +14,6 @@
 package com.wta.NewCloudApp.mvp.ui.widget.qr.camera;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.hardware.Camera;
 import android.os.Handler;
 import android.view.SurfaceHolder;
@@ -29,8 +28,6 @@ import java.util.List;
 public final class CameraManager {
     @SuppressLint("StaticFieldLeak")
     private static CameraManager sCameraManager;
-    @SuppressLint("StaticFieldLeak")
-    private static Activity mActivity;
 
     private final CameraConfigurationManager mConfigManager;
     /**
@@ -47,7 +44,7 @@ public final class CameraManager {
     private boolean mPreviewing;
 
     private CameraManager() {
-        this.mConfigManager = new CameraConfigurationManager(mActivity);
+        this.mConfigManager = new CameraConfigurationManager();
         mPreviewCallback = new PreviewCallback(mConfigManager);
         mAutoFocusCallback = new AutoFocusCallback();
     }
@@ -55,9 +52,8 @@ public final class CameraManager {
     /**
      * Initializes this static object with the Context of the calling Activity.
      */
-    public static void init(Activity activity) {
+    public static void init() {
         if (sCameraManager == null) {
-            mActivity = activity;
             sCameraManager = new CameraManager();
         }
     }

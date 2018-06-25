@@ -35,6 +35,12 @@ public class ScreenUtils {
         return dm.widthPixels;
     }
 
+    public static int getScreenHeight() {
+        Context context = App.getInstance();
+        DisplayMetrics dm = context.getResources().getDisplayMetrics();
+        return dm.heightPixels;
+    }
+
     /**
      * 获取屏幕高度
      *

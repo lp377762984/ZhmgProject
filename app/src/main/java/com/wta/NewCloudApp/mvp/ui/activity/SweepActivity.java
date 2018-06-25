@@ -6,13 +6,13 @@ import android.os.Handler;
 import android.os.Vibrator;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.Toast;
 
+import com.google.zxing.Result;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.wta.NewCloudApp.jiuwei210278.R;
@@ -58,7 +58,7 @@ public class SweepActivity extends BaseActivity implements SurfaceHolder.Callbac
     public void initData(@Nullable Bundle savedInstanceState) {
         switchLight.setOnClickListener(this);
         mHasSurface = false;
-        CameraManager.init(this);
+        CameraManager.init();
         mInactivityTimer = new InactivityTimer(this);
     }
 
@@ -69,7 +69,7 @@ public class SweepActivity extends BaseActivity implements SurfaceHolder.Callbac
     /**
      * Handler scan result
      */
-    public void handleDecode(com.google.zxing.Result result) {
+    public void handleDecode(Result result) {
         mInactivityTimer.onActivity();
         Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         assert vibrator != null;

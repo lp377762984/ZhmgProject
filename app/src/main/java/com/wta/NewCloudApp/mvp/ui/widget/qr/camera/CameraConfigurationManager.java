@@ -13,14 +13,12 @@
 
 package com.wta.NewCloudApp.mvp.ui.widget.qr.camera;
 
-import android.app.Activity;
 import android.graphics.Point;
 import android.hardware.Camera;
 import android.util.Log;
 
 import com.wta.NewCloudApp.mvp.ui.widget.qr.utils.ScreenUtils;
 
-import java.lang.ref.WeakReference;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -35,20 +33,16 @@ final class CameraConfigurationManager {
 
     private Camera.Size mCameraResolution;
     private Camera.Size mPictureResolution;
-    private WeakReference<Activity> mActivity;
 
-    public CameraConfigurationManager(Activity mActivity) {
-        this.mActivity = new WeakReference<Activity>(mActivity);
+    public CameraConfigurationManager() {
     }
 
     private static Point getCameraResolution(Camera.Parameters parameters, Point screenResolution) {
-
         String previewSizeValueString = parameters.get("preview-size-values");
         // saw this on Xperia
         if (previewSizeValueString == null) {
             previewSizeValueString = parameters.get("preview-size-value");
         }
-
         Point cameraResolution = null;
 
         if (previewSizeValueString != null) {
@@ -123,22 +117,18 @@ final class CameraConfigurationManager {
         return tenBestValue;
     }
 
-    public static int getDesiredSharpness() {
-        return DESIRED_SHARPNESS;
-    }
-
     /**
      * Reads, one time, values from the camera that are needed by the app.
      */
     void initFromCameraParameters(Camera camera) {
 
         Camera.Parameters parameters = camera.getParameters();
-        Log.e(TAG, "screen width: " + ScreenUtils.getScreenWidth() + "-" + ScreenUtils.getScreenHeight(mActivity.get()));
-        mCameraResolution = findCloselySize(ScreenUtils.getScreenWidth(), ScreenUtils.getScreenHeight(mActivity.get()),
+        Log.e(TAG, "screen width: " + ScreenUtils.getScreenWidth() + "-" + ScreenUtils.getScreenHeight());
+        mCameraResolution = findCloselySize(ScreenUtils.getScreenWidth(), ScreenUtils.getScreenHeight(),
                 parameters.getSupportedPreviewSizes(), true);
         //mCameraResolution = camera.new Size(1280,720);
         Log.e(TAG, "Setting preview size: " + mCameraResolution.width + "-" + mCameraResolution.height);
-        mPictureResolution = findCloselySize(ScreenUtils.getScreenWidth(), ScreenUtils.getScreenHeight(mActivity.get()),
+        mPictureResolution = findCloselySize(ScreenUtils.getScreenWidth(), ScreenUtils.getScreenHeight(),
                 parameters.getSupportedPictureSizes(), false);
         //mPictureResolution = camera.new Size(1280,720);
         Log.e(TAG, "Setting picture size: " + mPictureResolution.width + "-" + mPictureResolution.height);
@@ -214,24 +204,12 @@ final class CameraConfigurationManager {
                 // continue
             }
         }
-
-        // Set zoom. This helps encourage the user to pull back.
-        // Some devices like the Behold have a zoom parameter
-        // if (maxZoomString != null || motZoomValuesString != null) {
-        // parameters.set("zoom", String.valueOf(tenDesiredZoom / 10.0));
-        // }
         if (parameters.isZoomSupported()) {
             Log.e(TAG, "max-zoom:" + parameters.getMaxZoom());
             parameters.setZoom(parameters.getMaxZoom() / 10);
         } else {
             Log.e(TAG, "Unsupported zoom.");
         }
-
-        // Most devices, like the Hero, appear to expose this zoom parameter.
-        // It takes on values like "27" which appears to mean 2.7x zoom
-        // if (takingPictureZoomMaxString != null) {
-        // parameters.set("taking-picture-zoom", tenDesiredZoom);
-        // }
     }
 
     /**
@@ -243,36 +221,7 @@ final class CameraConfigurationManager {
      * @return 得到与原宽高比例最接近的尺寸
      */
     protected Camera.Size findCloselySize(int surfaceWidth, int surfaceHeight, List<Camera.Size> preSizeList, boolean isPre) {
-
-        // // 当屏幕为垂直的时候需要把宽高值进行调换，保证宽大于高
-        // int ReqTmpWidth = surfaceHeight;
-        // int ReqTmpHeight = surfaceWidth;
-        //
-        // // 先查找preview中是否存在与SurfaceView相同宽高的尺寸
-        // for (Size size : preSizeList) {
-        // if ((size.width == ReqTmpWidth) && (size.height == ReqTmpHeight)) {
-        // return size;
-        // }
-        // }
-        //
-        // // 得到与传入的宽高比最接近的size
-        // float reqRatio = ((float) ReqTmpWidth) / ReqTmpHeight;
-        // float curRatio, deltaRatio;
-        // float deltaRatioMin = Float.MAX_VALUE;
-        // Size retSize = null;
-        // for (Size size : preSizeList) {
-        // curRatio = ((float) size.width) / size.height;
-        // deltaRatio = Math.abs(reqRatio - curRatio);
-        // if (deltaRatio < deltaRatioMin) {
-        // deltaRatioMin = deltaRatio;
-        // retSize = size;
-        // }
-        // }
         Collections.sort(preSizeList, new SizeComparator(surfaceWidth, surfaceHeight));
-        for (int i = 0; i < preSizeList.size(); i++) {
-            Camera.Size size = preSizeList.get(i);
-            //Log.e(TAG, (isPre ? "preViewSize: " : "pictureSize: ") + size.width + "-" + size.height);
-        }
         return preSizeList.get(0);
     }
 
