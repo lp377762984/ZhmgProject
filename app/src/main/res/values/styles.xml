@@ -12,6 +12,19 @@
         <item name="colorPrimary">@color/style_color</item>
         <item name="colorPrimaryDark">@color/style_color</item>
         <item name="colorAccent">@color/style_color</item>
-        <!--<item name="android:windowBackground">@android:color/background_light</item>-->
+        <item name="android:windowBackground">@color/line_wider</item>
     </style>
+
+    <style name="SelectBackgroundWhile">
+        <item name="android:background">@drawable/select_background_while</item>
+    </style>
+
+    <style name="SelectBackground">
+        <item name="android:background">@drawable/select_background</item>
+    </style>
+
+    <style name="SelectBackgroundBorderless">
+        <item name="android:background">@drawable/select_background</item>
+    </style>
+
 </resources>

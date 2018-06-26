@@ -39,7 +39,10 @@
     <color name="shop_green">#4ca703</color>
 
     <color name="line_wider">#FFECE8DC</color>
+    <color name="line">#d9d8d9</color>
     <color name="style_color">#bf3b3e</color>
     <color name="text_color_gray">#999999</color>
+    <color name="text_color_gray2">#909090</color>
     <color name="text_color">#666666</color>
+    <color name="text_color2">#646464</color>
 </resources>

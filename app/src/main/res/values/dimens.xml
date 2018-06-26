@@ -40,4 +40,5 @@
     <dimen name="main_line_space">40dp</dimen>
     <dimen name="login_head_dimen">60dp</dimen>
     <dimen name="goods_dimen">103.5dp</dimen>
+    <dimen name="money_bar_height">50dp</dimen>
 </resources>
