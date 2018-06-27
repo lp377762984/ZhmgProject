@@ -36,7 +36,7 @@
         <activity android:name="com.wta.NewCloudApp.mvp.ui.activity.BaseListActivity" />
         <activity
             android:name="com.wta.NewCloudApp.mvp.ui.activity.LoginActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity android:name="com.wta.NewCloudApp.mvp.ui.activity.BaseLoadingActivity" />
         <activity android:name="com.wta.NewCloudApp.mvp.ui.activity.WebViewActivity" />
         <!-- third_party -->
@@ -86,7 +86,10 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity android:name="com.wta.NewCloudApp.mvp.ui.activity.SweepActivity" />
-        <activity android:name="com.wta.NewCloudApp.mvp.ui.activity.UserMsgActivity"
+        <activity
+            android:name="com.wta.NewCloudApp.mvp.ui.activity.UserMsgActivity"
+            android:exported="true" />
+        <activity android:name="com.wta.NewCloudApp.mvp.ui.activity.UserQRActivity"
             android:exported="true"/>
     </application>
 

@@ -55,6 +55,10 @@ public class MoneyBar extends LinearLayout implements View.OnClickListener {
         return R.mipmap.white_back;
     }
 
+    private int initTailImg() {
+        return R.mipmap.qr_more;
+    }
+
     //初始化
     private void initView(Context context, AttributeSet attrs) {
 
@@ -64,6 +68,7 @@ public class MoneyBar extends LinearLayout implements View.OnClickListener {
         bgView = findViewById(R.id.money_bar_parent);
         View line = findViewById(R.id.money_bar_line);
         ImageView backIm = (ImageView) findViewById(R.id.im_back);
+        ImageView tailIm = (ImageView) findViewById(R.id.im_tail);
         tailText = (TextView) findViewById(R.id.tail_text);
 
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.MoneyBar);
@@ -74,10 +79,13 @@ public class MoneyBar extends LinearLayout implements View.OnClickListener {
         boolean needBack = ta.getBoolean(R.styleable.MoneyBar_needBack, true);
         boolean needLine = ta.getBoolean(R.styleable.MoneyBar_needLine, false);
         int backImgId = ta.getResourceId(R.styleable.MoneyBar_backImg, initBackImg());
+        int tailImgId = ta.getResourceId(R.styleable.MoneyBar_tailImg, initTailImg());
         backIm.setBackgroundResource(backImgId);
+        tailIm.setImageResource(tailImgId);
         //设置尾部文字
         setTextTail(tailStr);
         tailText.setOnClickListener(this);
+        tailIm.setOnClickListener(this);
         //设置title字体颜色
         mTextView.setTextColor(titleTextColor);
         //设置背景
@@ -99,6 +107,7 @@ public class MoneyBar extends LinearLayout implements View.OnClickListener {
         ta.recycle();
     }
 
+
     //返回导航的功能
     @Override
     public void onClick(View v) {
@@ -112,6 +121,11 @@ public class MoneyBar extends LinearLayout implements View.OnClickListener {
                 }
                 break;
             case R.id.tail_text:
+                if (callBack != null) {
+                    callBack.clickTail();
+                }
+                break;
+            case R.id.im_tail:
                 if (callBack != null) {
                     callBack.clickTail();
                 }

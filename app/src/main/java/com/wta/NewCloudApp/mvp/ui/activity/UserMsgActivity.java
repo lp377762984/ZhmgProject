@@ -14,6 +14,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.jess.arms.di.component.AppComponent;
+import com.jess.arms.utils.ArmsUtils;
 import com.jess.arms.utils.DataHelper;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.wta.NewCloudApp.di.component.DaggerUserMsgComponent;
@@ -96,6 +97,7 @@ public class UserMsgActivity extends BaseLoadingActivity<UserMsgPresenter> imple
             case R.id.lat_name:
                 break;
             case R.id.lat_code:
+                ArmsUtils.startActivity(UserQRActivity.class);
                 break;
         }
     }
