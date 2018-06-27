@@ -129,7 +129,7 @@ public class UserQRActivity extends BaseLoadingActivity<UserQRPresenter> impleme
                             @Override
                             public void accept(Boolean aBoolean) throws Exception {
                                 if (aBoolean) saveBitmap();
-                                else ArmsUtils.makeText(UserQRActivity.this, "请打开读写权限");
+                                else ArmsUtils.makeText(App.getInstance(), "请打开读写权限");
                             }
                         });
                 if (btmDialog != null && btmDialog.isShowing()) btmDialog.dismiss();
@@ -153,5 +153,11 @@ public class UserQRActivity extends BaseLoadingActivity<UserQRPresenter> impleme
             e.printStackTrace();
             ArmsUtils.makeText(App.getInstance(), "保存失败");
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        qrCode = null;
     }
 }

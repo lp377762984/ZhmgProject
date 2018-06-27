@@ -89,7 +89,10 @@
         <activity
             android:name="com.wta.NewCloudApp.mvp.ui.activity.UserMsgActivity"
             android:exported="true" />
-        <activity android:name="com.wta.NewCloudApp.mvp.ui.activity.UserQRActivity"
+        <activity
+            android:name="com.wta.NewCloudApp.mvp.ui.activity.UserQRActivity"
+            android:exported="true" />
+        <activity android:name="com.wta.NewCloudApp.mvp.ui.activity.BServiceActivity"
             android:exported="true"/>
     </application>
 

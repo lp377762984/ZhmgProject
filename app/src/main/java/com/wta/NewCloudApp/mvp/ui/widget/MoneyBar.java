@@ -56,7 +56,7 @@ public class MoneyBar extends LinearLayout implements View.OnClickListener {
     }
 
     private int initTailImg() {
-        return R.mipmap.qr_more;
+        return 0;
     }
 
     //初始化
@@ -80,7 +80,7 @@ public class MoneyBar extends LinearLayout implements View.OnClickListener {
         boolean needLine = ta.getBoolean(R.styleable.MoneyBar_needLine, false);
         int backImgId = ta.getResourceId(R.styleable.MoneyBar_backImg, initBackImg());
         int tailImgId = ta.getResourceId(R.styleable.MoneyBar_tailImg, initTailImg());
-        backIm.setBackgroundResource(backImgId);
+        if (tailImgId != 0) backIm.setBackgroundResource(backImgId);
         tailIm.setImageResource(tailImgId);
         //设置尾部文字
         setTextTail(tailStr);
