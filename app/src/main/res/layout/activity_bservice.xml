@@ -22,8 +22,11 @@
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="220dp"
-                android:layout_margin="16dp"
+                android:layout_height="210dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="10dp"
                 android:background="@drawable/bs_head_bg">
 
                 <android.support.design.widget.TabLayout
@@ -51,7 +54,7 @@
                     android:layout_marginTop="8dp"
                     android:text="00.00元"
                     android:textColor="#323232"
-                    android:textSize="34sp"
+                    android:textSize="33sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -69,7 +72,7 @@
                     android:drawablePadding="5dp"
                     android:text="收款"
                     android:textColor="@color/text_color2"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
 
@@ -84,7 +87,7 @@
                     android:drawablePadding="5dp"
                     android:text="记录"
                     android:textColor="@color/text_color2"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
             </android.support.constraint.ConstraintLayout>
@@ -109,14 +112,14 @@
                     android:layout_marginLeft="17dp"
                     android:text="推荐服务"
                     android:textColor="@color/text_color2"
-                    android:textSize="17sp" />
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/lat_bs_benefit"
                 android:layout_width="match_parent"
                 android:layout_height="83dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="7dp"
                 android:background="@color/white"
                 android:orientation="vertical"
                 android:paddingLeft="36dp"
@@ -143,7 +146,7 @@
                 android:id="@+id/lat_bs_details"
                 android:layout_width="match_parent"
                 android:layout_height="83dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="7dp"
                 android:background="@color/white"
                 android:orientation="vertical"
                 android:paddingLeft="36dp"

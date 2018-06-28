@@ -46,7 +46,7 @@
     <View
         android:id="@+id/divider"
         android:layout_width="match_parent"
-        android:layout_height="10dp"
+        android:layout_height="13dp"
         android:background="@color/line_wider" />
 
     <android.support.v4.widget.NestedScrollView
@@ -61,7 +61,7 @@
             <com.youth.banner.Banner
                 android:id="@+id/banner"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="155dp"
                 android:background="@android:color/holo_orange_dark"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -71,11 +71,11 @@
                 android:id="@+id/linearLayout"
                 android:layout_width="0dp"
                 android:layout_height="140dp"
-                android:background="#FFECE8DC"
+                android:background="@color/white"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/banner">
@@ -84,7 +84,7 @@
                     android:id="@+id/im_business"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="2.5dp"
+                    android:layout_marginRight="5dp"
                     android:layout_weight="1"
                     app:srcCompat="@mipmap/home_bussiness" />
 
@@ -92,12 +92,13 @@
                     android:id="@+id/im_score_shop"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="2.5dp"
+                    android:layout_marginLeft="5dp"
                     android:layout_weight="1"
                     app:srcCompat="@mipmap/home_score_shop" />
             </LinearLayout>
 
             <FrameLayout
+                android:layout_marginTop="10dp"
                 android:id="@+id/msg_lat"
                 android:layout_width="0dp"
                 android:layout_height="30dp"
@@ -116,7 +117,7 @@
                     android:drawablePadding="7dp"
                     android:text="消息"
                     android:textColor="#999999"
-                    android:textSize="15sp" />
+                    android:textSize="16sp" />
             </FrameLayout>
 
             <View
