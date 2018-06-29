@@ -49,7 +49,7 @@ public class HomeModel extends BaseModel implements HomeContract.Model {
                 .map(new Function<Long, Result<List<Bill>>>() {
                     @Override
                     public Result<List<Bill>> apply(Long aLong) throws Exception {
-                        Result<List<Bill>> result = new Result<>(200);
+                        Result<List<Bill>> result = new Result<>(20);
                         List<Bill> bills = new ArrayList<>();
                         for (int i = 0; i < 3; i++) {
                             bills.add(new Bill("￥88088", "aaa", "收款", "06-22 18:00", "现金收益", "bbb", "ccc", "ddd"));

@@ -12,8 +12,11 @@ import com.jess.arms.utils.RxLifecycleUtils;
 import com.wta.NewCloudApp.config.App;
 import com.wta.NewCloudApp.config.DefaultHandleSubscriber;
 import com.wta.NewCloudApp.config.HttpResponseHandler;
+import com.wta.NewCloudApp.mvp.model.entity.Resend;
 import com.wta.NewCloudApp.mvp.model.entity.Result;
 import com.wta.NewCloudApp.mvp.ui.activity.LoginActivity;
+
+import org.simple.eventbus.Subscriber;
 
 import javax.inject.Inject;
 
@@ -21,11 +24,13 @@ import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 import me.jessyan.rxerrorhandler.core.RxErrorHandler;
+import timber.log.Timber;
 
 
 public class BBasePresenter<M extends IModel, V extends IView> extends BasePresenter<M, V> implements HttpResponseHandler {
     @Inject
     RxErrorHandler mErrorHandler;
+    protected Resend resend;
 
     public BBasePresenter(M model, V rootView) {
         super(model, rootView);
@@ -60,6 +65,7 @@ public class BBasePresenter<M extends IModel, V extends IView> extends BasePrese
 
     //执行网络请求
     protected <T> void doRequest(Observable<T> observable, RxErrorHandler errorHandler, int what, HttpResponseHandler handler) {
+        resend = new Resend((observable), what);
         observable.subscribe(new DefaultHandleSubscriber<T>(errorHandler, what, handler));
     }
 
@@ -91,6 +97,13 @@ public class BBasePresenter<M extends IModel, V extends IView> extends BasePrese
     //生成网络请求
     protected <T> Observable<T> buildRequest(Observable<T> observable) {
         return buildRequest(observable, true);
+    }
+
+    @Subscriber
+    private void reDoRequest(int what) {
+        Timber.d("reDoRequest: %s",what);
+        if (resend != null)
+            doRequest(resend.observable, mErrorHandler, resend.what);
     }
 
 }

@@ -29,6 +29,8 @@ import com.wta.NewCloudApp.mvp.presenter.LoginPresenter;
 import com.wta.NewCloudApp.mvp.ui.widget.ClearEditText;
 import com.wta.NewCloudApp.uitls.RegexUtils;
 
+import org.simple.eventbus.EventBus;
+
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -233,5 +235,8 @@ public class LoginActivity extends BaseLoadingActivity<LoginPresenter> implement
     @Override
     public void loginSuccess(Result<User> results) {
         ArmsUtils.makeText(this,"登陆成功");
+        //ArmsUtils.startActivity(MainActivity.class);
+        EventBus.getDefault().post(1);
+        finish();
     }
 }
