@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.jess.arms.base.delegate.IFragment;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
 import com.jess.arms.utils.DataHelper;
@@ -22,6 +23,7 @@ import com.wta.NewCloudApp.di.module.UserMsgModule;
 import com.wta.NewCloudApp.jiuwei210278.R;
 import com.wta.NewCloudApp.mvp.contract.UserMsgContract;
 import com.wta.NewCloudApp.mvp.presenter.UserMsgPresenter;
+import com.wta.NewCloudApp.uitls.FinalUtils;
 
 import org.devio.takephoto.app.TakePhoto;
 import org.devio.takephoto.app.TakePhotoImpl;
@@ -95,6 +97,7 @@ public class UserMsgActivity extends BaseLoadingActivity<UserMsgPresenter> imple
                 btmDialog.show();
                 break;
             case R.id.lat_name:
+                NameSetActivity.start(this,tvName.getText().toString());
                 break;
             case R.id.lat_code:
                 ArmsUtils.startActivity(UserQRActivity.class);
@@ -148,6 +151,7 @@ public class UserMsgActivity extends BaseLoadingActivity<UserMsgPresenter> imple
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         getTakePhoto().onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode==RESULT_OK && requestCode== FinalUtils.REQUEST_SET_NAME) tvName.setText(data.getStringExtra("name"));
     }
 
     @Override
