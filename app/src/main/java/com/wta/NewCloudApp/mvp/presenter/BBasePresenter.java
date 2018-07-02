@@ -24,7 +24,6 @@ import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 import me.jessyan.rxerrorhandler.core.RxErrorHandler;
-import timber.log.Timber;
 
 
 public class BBasePresenter<M extends IModel, V extends IView> extends BasePresenter<M, V> implements HttpResponseHandler {
@@ -101,9 +100,9 @@ public class BBasePresenter<M extends IModel, V extends IView> extends BasePrese
 
     @Subscriber
     private void reDoRequest(int what) {
-        Timber.d("reDoRequest: %s",what);
-        if (resend != null)
+        if (resend != null) {
             doRequest(resend.observable, mErrorHandler, resend.what);
+        }
     }
 
 }
